@@ -1,0 +1,85 @@
+
+python train_model.py --dataset datasets/Cells/Q4 --model output/lenet5.hdf5 --model_json output_to_json/modelQ4_2.json
+
+Q6 12520+7582.  It is worth noticing that in the Unhealthy folder there are some images that look kind of healthy.
+
+python train_model.py --dataset datasets/Cells/Q6 --model output/lenet6.hdf5 --model_json output_to_json/modelQ6_2.json
+
+              precision    recall  f1-score   support
+
+     healthy       0.96      0.95      0.95      2504
+   unhealthy       0.92      0.93      0.92      1517
+
+    accuracy                           0.94      4021
+   macro avg       0.94      0.94      0.94      4021
+weighted avg       0.94      0.94      0.94      4021
+
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d_1 (Conv2D)            (None, 128, 128, 20)      520
+_________________________________________________________________
+activation_1 (Activation)    (None, 128, 128, 20)      0
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 64, 64, 20)        0
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 64, 64, 20)        0
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 64, 64, 50)        25050
+_________________________________________________________________
+activation_2 (Activation)    (None, 64, 64, 50)        0
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 32, 32, 50)        0
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 32, 32, 50)        0
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 32, 32, 50)        62550
+_________________________________________________________________
+activation_3 (Activation)    (None, 32, 32, 50)        0
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 16, 16, 50)        0
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 16, 16, 50)        01
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 16, 16, 50)        62550
+_________________________________________________________________
+activation_4 (Activation)    (None, 16, 16, 50)        0
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 8, 8, 50)          0
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 8, 8, 50)          0
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 3200)              0
+_________________________________________________________________
+dense_1 (Dense)              (None, 500)               1600500
+_________________________________________________________________
+activation_5 (Activation)    (None, 500)               0
+_________________________________________________________________
+dense_2 (Dense)              (None, 2)                 1002
+_________________________________________________________________
+activation_6 (Activation)    (None, 2)                 0
+=================================================================
+Total params: 1,752,172
+Trainable params: 1,752,172
+Non-trainable params: 0
+
+Then I run 
+Using the model trained on June 6th 2020, 
+output_to_json/modelQ6_2.json &    output/lenet6.hdf5
+python RunCustomLeNetModel.py --dataset datasets/Cells/Q1
+with accuracy 0.7906690140845071
+
+Using the model trained on June 16th 2019, 
+modelQ6_128x128_customLenet.json &    output/lenetQ6_128x128_customLenet.hdf5
+python RunCustomLeNetModel.py --dataset datasets/Cells/Q1
+with accuracy 0.7900528169014085
+
+Using the model trained on June 16th 2019, 
+modelQ6_128x128_customLenet.json &    output/lenetQ6_128x128_customLenet.hdf5
+python RunCustomLeNetModel.py --dataset datasets/Cells/Q4
+with accuracy 0.9802705416740505
+
+
+
+We would like to see the effect of the Preprocessing on the Cell Images.
