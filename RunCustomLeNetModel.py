@@ -30,26 +30,15 @@ data = []
 labels = []
 a = 0
 for imagePath in sorted(list(paths.list_images(args["dataset"]))):
-    # load the image, pre-process it, and store it in the data list
-
-    # Read PNG
-    # image = cv.imread(imagePath)
-    # image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-
     # Read in tiff
     pil_image = PIL.Image.open(imagePath).convert('RGB')
     open_cv_image = np.array(pil_image)
     open_cv_image = open_cv_image[:, :, ::-1].copy()  # Convert RGB to BGR
     image = cv.cvtColor(open_cv_image, cv.COLOR_BGR2GRAY)
-
-    # image = imutils.resize(image, width=28)
-    # image = imutils.resize(image, width=64)
     image = imutils.resize(image, width=128)
     image = img_to_array(image)
     data.append(image)
-
-    # extract the class label from the image path and update the
-    # labels list
+    # extract the class label from the image path and update the labels list
     label = imagePath.split(os.path.sep)[-2]
     # label = "smiling" if label == "positives" else "not_smiling"
     label = "healthy" if label == "healthy" else "unhealthy"
@@ -122,11 +111,6 @@ for i in np.random.choice(np.arange(0, len(trainY)), size=(size,)):
 
 print('Accuracy: ',
       predicted / size)
-# # img = cv.imwrite('images.png', images)
-# images = np.concatenate(images, axis=1)
-# cv.imshow("Cell", images)
-# cv.waitKey(0)
-
 
 fig = plt.figure(figsize=(14, 14))
 columns = 8
