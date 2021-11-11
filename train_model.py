@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from keras.preprocessing.image import img_to_array
 from keras.utils import np_utils
-from pyimagesearch.nn.conv.lenet import LeNet
-from pyimagesearch.nn.conv.customLenet import LeNetCustom
+from modelConstruction.nn.conv.lenet import LeNet
+from modelConstruction.nn.conv.customLenet import LeNetCustom
 from imutils import paths
 import matplotlib.pyplot as plt
 import numpy as np

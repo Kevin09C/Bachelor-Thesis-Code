@@ -1,6 +1,6 @@
 # import the necessary packages
-from pyimagesearch.nn.conv.lenet import LeNet
-from pyimagesearch.nn.conv.customLenet import LeNetCustom
+from modelConstruction.nn.conv.lenet import LeNet
+from modelConstruction.nn.conv.customLenet import LeNetCustom
 from keras.utils import plot_model
 from keras.models import model_from_json
 import cv2
